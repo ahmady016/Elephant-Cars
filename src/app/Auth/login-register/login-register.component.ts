@@ -9,8 +9,8 @@ import { AuthService } from './../auth.service';
 
 export class LoginRegisterComponent implements OnInit {
 
-  email: string = 'intern@theelephant.tech';
-  password: string = 'thisIsSecure';
+  email: string;
+  password: string;
 
   constructor(public authSrv: AuthService) { }
 
@@ -29,11 +29,11 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.login();
+    this.authSrv.login('intern@theelephant.tech', 'thisIsSecure');
     setTimeout(() => {
       this.logout();
     }, 3000);
-    this.authSrv.register('ahmady09@gmail.com', '335592ah');
+    //this.authSrv.register('ahmady09@gmail.com', '335592ah');
     setTimeout(() => {
       this.authSrv.login('ahmady09@gmail.com', '335592ah');
     }, 6000);

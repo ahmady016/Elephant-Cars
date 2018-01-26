@@ -9,10 +9,12 @@ import { AuthService } from './auth/auth.service';
 import { AppComponent } from './root/app.component';
 import { env } from '../environments/environment';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
+import { CarsListComponent } from './cars/cars-list/cars-list.component';
   @NgModule({
   declarations: [
     AppComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    CarsListComponent
   ],
   imports: [
     BrowserModule,

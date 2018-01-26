@@ -1,0 +1,10 @@
+<h2>cars-list works!</h2>
+<ul *ngIf="cars">
+  <li *ngFor="let car of cars">
+    <span><img [src]="car.imageUrl" [alt]="car.model"></span>
+    <span>{{ car.brand }}</span>
+    <span>{{ car.model }}</span>
+    <span>{{ car.country }}</span>
+    <span>{{ car.year }}</span>
+  </li>
+</ul>
