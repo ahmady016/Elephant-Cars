@@ -5,11 +5,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { AuthService } from './auth/auth.service';
 import { AppComponent } from './root/app.component';
 import { env } from '../environments/environment';
+import { LoginRegisterComponent } from './auth/login-register/login-register.component';
   @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import { env } from '../environments/environment';
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

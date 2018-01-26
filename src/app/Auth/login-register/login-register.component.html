@@ -1,0 +1,2 @@
+<h2 *ngIf="authSrv.user | async">Welcome {{ (authSrv.user | async)?.email }}!</h2>
+<h2 *ngIf="!(authSrv.user | async)">login OR register now</h2>
