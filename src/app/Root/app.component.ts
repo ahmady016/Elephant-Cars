@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './../auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Elephant Cars ...';
+  title = 'Elephant Cars';
+  constructor(public authSrv: AuthService) {
+    this.authSrv.login('intern@theelephant.tech', 'thisIsSecure');
+    setTimeout(() => this.authSrv.login('ahmady09@gmail.com', '335592ah'), 10000);
+  }
 }

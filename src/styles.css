@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* material icons */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+/* material theme */
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+body {
+  background: #c5c5c6;
+}
+.container {
+  width: 75%;
+  margin: auto;
+}

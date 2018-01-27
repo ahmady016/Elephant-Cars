@@ -1,2 +1,22 @@
-<h2 *ngIf="authSrv.user | async">Welcome {{ (authSrv.user | async)?.email }}!</h2>
-<h2 *ngIf="!(authSrv.user | async)">login OR register now</h2>
+<div>
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>Authentication</mat-card-title>
+        <mat-card-subtitle>Login OR Register</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class=''>
+          <mat-form-field>
+            <input matInput placeholder="type your email">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="type your password">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button color="primary">Login</button>
+          <button mat-raised-button color="accent">Register</button>
+      </mat-card-actions>
+    </mat-card>
+</div>

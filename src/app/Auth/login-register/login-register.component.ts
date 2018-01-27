@@ -29,14 +29,6 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authSrv.login('intern@theelephant.tech', 'thisIsSecure');
-    setTimeout(() => {
-      this.logout();
-    }, 3000);
-    //this.authSrv.register('ahmady09@gmail.com', '335592ah');
-    setTimeout(() => {
-      this.authSrv.login('ahmady09@gmail.com', '335592ah');
-    }, 6000);
   }
 
 }
