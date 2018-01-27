@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CarsService } from '../cars.service';
 
 @Component({
@@ -11,8 +12,9 @@ export class CarDetailsComponent implements OnInit {
 
   id: string;
 
-  constructor(public CarsSrv: CarsService) {
-    this.id = '1';
+  constructor(private CarsSrv: CarsService,
+              private route: ActivatedRoute) {
+      this.route.params.subscribe(route => this.id = route.id);
   }
 
   ngOnInit() {

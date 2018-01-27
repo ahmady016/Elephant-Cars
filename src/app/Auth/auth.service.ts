@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 
+import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
-import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
 
   constructor(private fireAuth: AngularFireAuth,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private router: Router ) {
     this.user = fireAuth.authState;
   }
 
@@ -24,6 +26,7 @@ export class AuthService {
           duration: 5000
         });
         console.log('User Registered!', value);
+        this.router.navigate(['home']);
       })
       .catch(err => {
         this.snackBar.open(err.message, 'Something went wrong:', {
@@ -42,6 +45,7 @@ export class AuthService {
           duration: 5000
         });
         console.log('Nice, it worked!', [value.email, value.uid]);
+        this.router.navigate(['home']);
       })
       .catch(err => {
         this.snackBar.open(err.message, 'Something went wrong:', {
@@ -59,7 +63,8 @@ export class AuthService {
         this.snackBar.open('User Loged Out!', 'goodby' ,{
           duration: 5000
         });
-        console.log('Nice, it worked!')
+        console.log('Nice, it worked!');
+        this.router.navigate(['login']);
       })
       .catch(err => {
         this.snackBar.open(err.message, 'Something went wrong:', {

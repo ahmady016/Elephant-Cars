@@ -1,4 +1,5 @@
 <div class="container">
+  <!--
   <login-register *ngIf="!(authSrv.user | async)"></login-register>
   <div *ngIf="authSrv.user | async">
     <toolbar></toolbar>
@@ -6,4 +7,10 @@
     <car-details></car-details>
     <save-car></save-car>
   </div>
+  -->
+  <!-- toolbar visibale only when Authenticated -->
+  <toolbar *ngIf="authSrv.user | async"></toolbar>
+  <!-- Router goes after that element -->
+  <router-outlet></router-outlet>
+  <!-- Routed views go here -->
 </div>

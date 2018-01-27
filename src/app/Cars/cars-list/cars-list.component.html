@@ -2,7 +2,9 @@
   <mat-card-header>
     <mat-card-title>Cars List</mat-card-title>
     <mat-card-subtitle>
-      <button mat-raised-button color="accent">
+      <button mat-raised-button
+              color="accent"
+              routerLink="/car/add">
         Create New Car
       </button>
     </mat-card-subtitle>
@@ -16,7 +18,11 @@
       </tr>
       <tr *ngFor="let car of CarsSrv.cars">
         <td><img [src]="car.imageUrl" [alt]="car.model"></td>
-        <td>{{ car.brand }}</td>
+        <td>
+          <a mat-button [routerLink]="['/car', car.id]">
+            {{ car.brand }}
+          </a>
+        </td>
         <td>{{ car.model }}</td>
         <td>{{ car.country }}</td>
         <td>{{ car.year }}</td>
