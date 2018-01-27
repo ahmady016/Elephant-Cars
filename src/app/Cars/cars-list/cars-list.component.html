@@ -1,10 +1,35 @@
-<h2>cars-list works!</h2>
-<ul *ngIf="cars">
-  <li *ngFor="let car of cars">
-    <span><img [src]="car.imageUrl" [alt]="car.model"></span>
-    <span>{{ car.brand }}</span>
-    <span>{{ car.model }}</span>
-    <span>{{ car.country }}</span>
-    <span>{{ car.year }}</span>
-  </li>
-</ul>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Cars List</mat-card-title>
+    <mat-card-subtitle>
+      <button mat-raised-button color="accent">
+        Create New Car
+      </button>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <table *ngIf="cars.length">
+      <tr>
+        <th *ngFor="let col of cols">
+          {{col}}
+        </th>
+      </tr>
+      <tr *ngFor="let car of cars">
+        <td><img [src]="car.imageUrl" [alt]="car.model"></td>
+        <td>{{ car.brand }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.country }}</td>
+        <td>{{ car.year }}</td>
+        <td>
+          <button mat-raised-button color="accent"
+              (click)="deleteCar(car.id)">
+              Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+    <span *ngIf="!cars.length">
+      there is no data in the list right now ...
+    </span>
+  </mat-card-content>
+</mat-card>

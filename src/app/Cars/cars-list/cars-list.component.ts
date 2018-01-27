@@ -13,9 +13,18 @@ export class CarsListComponent implements OnInit {
   $carsList: AngularFireList<any>;
   cars: Car[];
   car: Car;
+  cols: string[];
 
   constructor(private db: AngularFireDatabase) {
     this.$carsList = this.db.list('/cars');
+    this.cols = [
+      'image',
+      'brand',
+      'model',
+      'country',
+      'year',
+      'action'
+    ];
   }
 
   addCar(car: any): void {
@@ -65,6 +74,7 @@ export class CarsListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cars = [];
     this.$carsList
         .snapshotChanges()
         .subscribe(_cars => {
@@ -75,7 +85,7 @@ export class CarsListComponent implements OnInit {
             });
         });
     //this.pushTest();
-    setTimeout(this.upDelTest(), 10000);
+    //setTimeout(this.upDelTest(), 10000);
   }
 
 }

@@ -59,7 +59,8 @@ export class AuthService {
         this.snackBar.open('User Loged Out!', 'goodby' ,{
           duration: 5000
         });
-        console.log('Nice, it worked!'))
+        console.log('Nice, it worked!')
+      })
       .catch(err => {
         this.snackBar.open(err.message, 'Something went wrong:', {
           duration: 5000
