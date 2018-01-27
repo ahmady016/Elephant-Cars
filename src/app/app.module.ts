@@ -10,17 +10,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatComponentsModule } from './mat-components.module';
 
 import { AuthService } from './auth/auth.service';
-import { AppComponent } from './root/app.component';
+import { CarsService } from './cars/cars.service';
+
 import { env } from '../environments/environment';
+
+import { AppComponent } from './root/app.component';
+import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
 import { CarsListComponent } from './cars/cars-list/cars-list.component';
-import { ToolbarComponent } from './Layout/toolbar/toolbar.component';
-  @NgModule({
+import { CarDetailsComponent } from './cars/car-details/car-details.component';
+
+@NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
     CarsListComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { ToolbarComponent } from './Layout/toolbar/toolbar.component';
     BrowserAnimationsModule,
     MatComponentsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

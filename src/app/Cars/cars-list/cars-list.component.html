@@ -8,13 +8,13 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <table *ngIf="cars.length">
+    <table *ngIf="CarsSrv.cars.length">
       <tr>
         <th *ngFor="let col of cols">
           {{col}}
         </th>
       </tr>
-      <tr *ngFor="let car of cars">
+      <tr *ngFor="let car of CarsSrv.cars">
         <td><img [src]="car.imageUrl" [alt]="car.model"></td>
         <td>{{ car.brand }}</td>
         <td>{{ car.model }}</td>
@@ -22,13 +22,13 @@
         <td>{{ car.year }}</td>
         <td>
           <button mat-raised-button color="accent"
-              (click)="deleteCar(car.id)">
+              (click)="CarsSrv.delete(car.id)">
               Delete
           </button>
         </td>
       </tr>
     </table>
-    <span *ngIf="!cars.length">
+    <span *ngIf="!CarsSrv.cars.length">
       there is no data in the list right now ...
     </span>
   </mat-card-content>

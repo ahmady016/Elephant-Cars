@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{CarsSrv.car.brand}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{CarsSrv.car.model}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image
+      [src]="CarsSrv.car.imageUrl"
+      [alt]="CarsSrv.car.model">
+    <mat-card-content>
+        <p>
+          <strong>Country: </strong>
+          {{CarsSrv.car.country}}
+        </p>
+        <p>
+          <strong>Year: </strong>
+          {{CarsSrv.car.year}}
+        </p>
+    </mat-card-content>
+  </mat-card>

@@ -1,5 +1,6 @@
 <div class="container">
-  <toolbar *ngIf="authSrv.user | async"></toolbar>
   <login-register *ngIf="!(authSrv.user | async)"></login-register>
+  <toolbar *ngIf="authSrv.user | async"></toolbar>
   <cars-list *ngIf="authSrv.user | async"></cars-list>
+  <car-details *ngIf="authSrv.user | async"></car-details>
 </div>
