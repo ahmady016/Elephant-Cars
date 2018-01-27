@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../auth.service';
 
 @Component({
@@ -9,26 +10,45 @@ import { AuthService } from './../auth.service';
 
 export class LoginRegisterComponent implements OnInit {
 
-  email: string;
-  password: string;
+  authForm: FormGroup;
+  email: FormControl;
+  password: FormControl;
 
   constructor(public authSrv: AuthService) { }
 
-  register() {
-    this.authSrv.register(this.email, this.password);
-    this.email = this.password = '';
+  register(value) {
+    if (this.authForm.valid) {
+      this.authSrv.register(value.email,value.password);
+      this.authForm.reset();
+    }
   }
 
-  login() {
-    this.authSrv.login(this.email, this.password);
-    this.email = this.password = '';
+  login(value) {
+    if (this.authForm.valid) {
+      this.authSrv.login(value.email,value.password);
+      this.authForm.reset();
+    }
   }
 
-  logout() {
-    this.authSrv.logout();
+  createForm() {
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+    ]);
+
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+
+    this.authForm = new FormGroup({
+      email: this.email,
+      password: this.password
+    });
   }
 
   ngOnInit() {
+    this.createForm();
   }
 
 }

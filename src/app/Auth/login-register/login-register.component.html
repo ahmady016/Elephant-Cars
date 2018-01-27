@@ -1,22 +1,39 @@
-<div>
+<form [formGroup]="authForm">
   <mat-card>
-      <mat-card-header>
-        <mat-card-title>Authentication</mat-card-title>
-        <mat-card-subtitle>Login OR Register</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <div class=''>
-          <mat-form-field>
-            <input matInput placeholder="type your email">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="type your password">
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-          <button mat-raised-button color="primary">Login</button>
-          <button mat-raised-button color="accent">Register</button>
-      </mat-card-actions>
-    </mat-card>
-</div>
+    <mat-card-header>
+      <mat-card-title>Authentication</mat-card-title>
+      <mat-card-subtitle>Login OR Register</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class=''>
+        <mat-form-field>
+          <input matInput placeholder="type your email" formControlName="email">
+          <mat-error *ngIf="email.invalid && email.touched">
+            <p *ngIf="email.errors.required">Email Required</p>
+            <p *ngIf="email.errors.email">Not A Valid Email</p>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="type your password" formControlName="password">
+          <mat-error *ngIf="password.invalid && password.touched">
+            <p *ngIf="password.errors.required">Password Required</p>
+            <p *ngIf="password.errors.minlength">
+              <span>Password must be {{password.errors.minlength.requiredLength}} characters</span>
+              <span>Remaining: {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters</span>
+            </p>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary"
+        [disabled]="authForm.invalid" (click)="login(authForm.value)">
+        Login
+      </button>
+      <button mat-raised-button color="accent"
+        [disabled]="authForm.invalid" (click)="register(authForm.value)">
+        Register
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

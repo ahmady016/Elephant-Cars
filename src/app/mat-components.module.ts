@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
+  MatSnackBarModule,
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
@@ -12,6 +13,7 @@ import {
 
 @NgModule({
   exports: [
+    MatSnackBarModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
