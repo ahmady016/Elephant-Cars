@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <span>{{title}}</span>
-    <span class="example-fill-remaining-space">
+    <span>
       Welcome {{ (authSrv.user | async)?.email }}!
       <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </span>

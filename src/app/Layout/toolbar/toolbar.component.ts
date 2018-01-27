@@ -8,6 +8,7 @@ import { AuthService } from './../../auth/auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
+  title = 'Elephant Cars';
   constructor(public authSrv: AuthService) { }
 
   ngOnInit() {

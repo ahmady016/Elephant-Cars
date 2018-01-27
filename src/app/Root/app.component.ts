@@ -7,7 +7,6 @@ import { AuthService } from './../auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Elephant Cars';
   constructor(public authSrv: AuthService) {
     this.authSrv.login('intern@theelephant.tech', 'thisIsSecure');
     setTimeout(() => this.authSrv.login('ahmady09@gmail.com', '335592ah'), 10000);
