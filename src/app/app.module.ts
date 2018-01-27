@@ -19,6 +19,7 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
 import { CarsListComponent } from './cars/cars-list/cars-list.component';
 import { CarDetailsComponent } from './cars/car-details/car-details.component';
+import { SaveCarComponent } from './cars/save-car/save-car.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarDetailsComponent } from './cars/car-details/car-details.component';
     LoginRegisterComponent,
     CarsListComponent,
     ToolbarComponent,
-    CarDetailsComponent
+    CarDetailsComponent,
+    SaveCarComponent
   ],
   imports: [
     BrowserModule,
