@@ -5,12 +5,13 @@
       <button mat-raised-button
               color="accent"
               routerLink="/car/add">
+        <mat-icon>note_add</mat-icon>
         Create New Car
       </button>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <table *ngIf="CarsSrv.cars.length">
+    <table *ngIf="CarsSrv.cars?.length">
       <tr>
         <th *ngFor="let col of cols">
           {{col}}
@@ -27,14 +28,18 @@
         <td>{{ car.country }}</td>
         <td>{{ car.year }}</td>
         <td>
-          <button mat-raised-button color="accent"
-              (click)="CarsSrv.delete(car.id)">
+          <a mat-button [routerLink]="['/car/update', car.id]">
+              <mat-icon>mode_edit</mat-icon>
+              Edit
+          </a>
+          <a mat-button (click)="CarsSrv.delete(car.id)">
+              <mat-icon>close</mat-icon>
               Delete
-          </button>
+          </a>
         </td>
       </tr>
     </table>
-    <span *ngIf="!CarsSrv.cars.length">
+    <span *ngIf="!CarsSrv.cars?.length">
       there is no data in the list right now ...
     </span>
   </mat-card-content>

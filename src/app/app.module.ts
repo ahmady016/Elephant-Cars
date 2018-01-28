@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginRegisterComponent },
   { path: 'home', component: CarsListComponent, canActivate: [AuthGuard] },
   { path: 'car/add', component: SaveCarComponent, canActivate: [AuthGuard] },
+  { path: 'car/update/:id', component: SaveCarComponent, canActivate: [AuthGuard] },
   { path: 'car/:id', component: CarDetailsComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
