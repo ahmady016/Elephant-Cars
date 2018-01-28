@@ -12,7 +12,7 @@ export class CarDetailsComponent implements OnInit {
 
   id: string;
 
-  constructor(private CarsSrv: CarsService,
+  constructor(public CarsSrv: CarsService,
               private route: ActivatedRoute) {
       this.route.params.subscribe(route => this.id = route.id);
   }

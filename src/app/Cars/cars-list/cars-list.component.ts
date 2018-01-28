@@ -10,7 +10,7 @@ export class CarsListComponent implements OnInit {
 
   cols: string[];
 
-  constructor(private CarsSrv: CarsService) {
+  constructor(public CarsSrv: CarsService) {
     this.cols = [
       'image',
       'brand',
