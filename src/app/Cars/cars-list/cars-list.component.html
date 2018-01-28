@@ -11,23 +11,25 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <table *ngIf="CarsSrv.cars?.length">
-      <tr>
-        <th *ngFor="let col of cols">
+    <div class="mat-table" *ngIf="CarsSrv.cars?.length">
+      <div class="mat-header-row">
+        <div class="mat-header-cell" *ngFor="let col of cols">
           {{col}}
-        </th>
-      </tr>
-      <tr *ngFor="let car of CarsSrv.cars">
-        <td><img [src]="car.imageUrl" [alt]="car.model"></td>
-        <td>
+        </div>
+      </div>
+      <div class="mat-row" *ngFor="let car of CarsSrv.cars">
+        <div class="mat-cell">
+          <img [src]="car.imageUrl" [alt]="car.model">
+        </div>
+        <div class="mat-cell">
           <a mat-button [routerLink]="['/car', car.id]">
             {{ car.brand }}
           </a>
-        </td>
-        <td>{{ car.model }}</td>
-        <td>{{ car.country }}</td>
-        <td>{{ car.year }}</td>
-        <td>
+        </div>
+        <div class="mat-cell">{{ car.model }}</div>
+        <div class="mat-cell">{{ car.country }}</div>
+        <div class="mat-cell">{{ car.year }}</div>
+        <div class="mat-cell">
           <a mat-button [routerLink]="['/car/update', car.id]">
               <mat-icon>mode_edit</mat-icon>
               Edit
@@ -36,9 +38,9 @@
               <mat-icon>close</mat-icon>
               Delete
           </a>
-        </td>
-      </tr>
-    </table>
+        </div>
+      </div>
+    </div>
     <span *ngIf="!CarsSrv.cars?.length">
       there is no data in the list right now ...
     </span>
