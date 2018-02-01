@@ -1,0 +1,13 @@
+.mat-card-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.mat-form-field {
+  display: block;
+  flex-basis: 45%;
+  margin-bottom: 15px;
+}
+.mat-card-actions {
+  margin: 0;
+}

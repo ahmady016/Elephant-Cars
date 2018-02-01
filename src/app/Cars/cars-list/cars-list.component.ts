@@ -25,4 +25,9 @@ export class CarsListComponent implements OnInit {
     this.CarsSrv.find();
   }
 
+  delete(id: string) {
+    if(confirm('Are you sure you want to delete this item ?'))
+      this.CarsSrv.delete(id);
+  }
+
 }
