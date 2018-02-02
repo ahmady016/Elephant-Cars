@@ -5,4 +5,8 @@ export interface Car {
   country: string;
   year: number;
   imageUrl: string;
+  createdBy?: string;
+  createdAt?: string;
+  modifiedBy?: string;
+  modifiedAt?: string;
 }

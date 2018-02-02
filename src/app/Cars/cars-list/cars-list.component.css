@@ -3,6 +3,10 @@ img {
   height: 50px;
 }
 
+.mat-progress-spinner {
+  margin: 20px auto;
+}
+
 .mat-table {
   display: block;
 }

@@ -74,3 +74,15 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+
+  // override the toString function of Date Object
+  Date.prototype.toString = function() {
+    let parts = this.toLocaleString()
+    .split(',')
+    .join('')
+    .split('/');
+    parts[0] = (+parts[0] < 10)? '0'+parts[0] : parts[0];
+    parts[1] = (+parts[1] < 10)? '0'+parts[1] : parts[1];
+    return [parts[1],parts[0],parts[2]].join('/');
+  }

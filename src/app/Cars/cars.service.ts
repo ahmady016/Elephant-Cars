@@ -12,9 +12,11 @@ export class CarsService {
   private $carsList: AngularFireList<any>;
   cars: Car[];
   car: Car;
+  loading: boolean;
 
   constructor(private db: AngularFireDatabase) {
     this.$carsList = this.db.list('/cars');
+    this.loading = false;
   }
 
   add(car: any): void {
@@ -32,6 +34,7 @@ export class CarsService {
   find(id?: string): void {
     if (id)
       this.car = this.cars.find(car => car.id === id);
+    this.loading = true;
     this.$carsList
         .snapshotChanges()
         .subscribe(_cars => {
@@ -40,6 +43,7 @@ export class CarsService {
               this.car.id = car.key;
               return this.car;
             });
+            this.loading = false;
         });
   }
 

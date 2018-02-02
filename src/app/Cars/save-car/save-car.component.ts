@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireDatabase } from "angularfire2/database";
 import { CarsService } from '../cars.service';
+import { AuthService } from './../../auth/auth.service';
 import { Car } from '../car';
 
 @Component({
@@ -24,6 +25,7 @@ export class SaveCarComponent implements OnInit {
   country: FormControl;
 
   constructor(private CarsSrv: CarsService,
+              private authSrv : AuthService,
               private db: AngularFireDatabase,
               private route: ActivatedRoute,
               private router: Router) {
@@ -60,16 +62,24 @@ export class SaveCarComponent implements OnInit {
     });
   }
 
-  save(value: Car) {
+  save(car: Car) {
     if (this.saveCarForm.invalid)
       return;
 
-    console.log(this.carId);
-
-    if(this.carId)
-      this.CarsSrv.update(this.carId, value);
-    else
-      this.CarsSrv.add(value);
+    if(this.carId) {
+      this.authSrv.user.subscribe(user => {
+        car.modifiedBy = user.email;
+        car.modifiedAt = (new Date()).toString();
+        this.CarsSrv.update(this.carId, car);
+      });
+    }
+    else {
+      this.authSrv.user.subscribe(user => {
+        car.createdBy = user.email
+        car.createdAt = (new Date()).toString();
+        this.CarsSrv.add(car);
+      });
+    }
 
     this.saveCarForm.reset();
     this.router.navigate(['home']);
